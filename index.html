@@ -1,16 +1,34 @@
 <!doctype html>
 <html lang="en">
-
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="./workintech.svg" />
+    <!-- Meta Description (SEO) -->
+    <meta
+      name="description"
+      content="Acıktın mı? En sevdiğin malzemeleri seç, pizzanı hemen oluştur ve sipariş ver. En lezzetli pizzalar, en hızlı şekilde adresinde!"
+    />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Workintech + 🍕</title>
+
+    <link rel="icon" type="image/svg+xml" href="./workintech.svg" />
+    <!-- PERFORMANS OPTİMİZASYONU -->
+    <!-- import google fonts -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;700&family=Quattrocento:wght@400;700&family=Roboto+Condensed:wght@400;700&family=Satisfy&display=swap"
+      media="print"
+      onload="this.media = 'all'"
+    />
+    <!-- Bağlantıyı önceden hazırlamak için  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- En üstteki logo preload oluyor -->
+    <link rel="preload" href="/assets/iteration-1/logo.svg" as="image" />
   </head>
 
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
-
 </html>

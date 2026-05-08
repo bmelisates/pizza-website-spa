@@ -1,0 +1,222 @@
+/* Genel Kodlar */
+.light-grey {
+  color: #5f5f5f !important;
+}
+.dark-grey {
+  color: #292929 !important;
+}
+
+.order-page-wrapper {
+  background-color: white;
+}
+.order-page-wrapper .container {
+  display: flex;
+  margin: auto;
+  width: 70% !important;
+  justify-content: space-between;
+  padding: 1rem 0;
+  font-family: Barlow;
+}
+.row {
+  width: 100%;
+  justify-content: space-between;
+}
+
+/* Header */
+.header {
+  background-color: #ce2829;
+  padding: 40px 0;
+  text-align: center;
+}
+
+/* Form */
+.order-form-group {
+  display: flex;
+  margin: auto;
+  width: 60% !important;
+  justify-content: space-between;
+  padding: 1rem 0;
+}
+
+.form-container {
+  justify-content: flex-start;
+  width: 40%;
+}
+
+.checkbox-group form {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.btn-warning {
+  background-color: #fdc913 !important;
+  color: #292929 !important;
+}
+
+.card {
+  padding: 0 !important;
+}
+
+.order-page-layout {
+  max-width: 450px;
+}
+
+.required {
+  color: #ce2829;
+}
+.count-buttons {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: stretch;
+  width: 150px !important;
+}
+
+/* Pizza Bilgisi */
+.product-info {
+  background-color: #faf7f2;
+  box-shadow: 0 0 0 100vmax #faf7f2;
+  clip-path: inset(0 -100vmax);
+}
+
+/* Boyut Seçimi */
+.size-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.size-buttons .form-check {
+  padding: 0;
+}
+
+.size-buttons input {
+  display: none;
+}
+
+.size-buttons label {
+  width: 52px;
+  height: 52px;
+
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  background: #faf7f2;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.size-buttons input:checked + label {
+  background: #ffeecc;
+  color: black;
+}
+
+/* Hamur Seçimi */
+.thickness-selects select {
+  background-color: #faf7f2 !important;
+  border-color: #ccc;
+  padding: 10px;
+}
+
+/* Malzeme Seçimi */
+.ingredient-check {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  font-family: Barlow;
+}
+
+.ingredient-check input {
+  appearance: none;
+  -webkit-appearance: none;
+
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background: #faf7f2;
+
+  cursor: pointer;
+  position: relative;
+  margin: 0;
+}
+
+.ingredient-check input:checked {
+  background: #fdc913;
+  border-color: #fdc913;
+}
+
+.ingredient-check input:checked::after {
+  content: "✔";
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #292929;
+  font-size: 16px;
+}
+
+/* Ad - Sipariş Notu */
+.name-area input,
+.order-note textarea {
+  background-color: #faf7f2 !important;
+}
+
+/* Butonlar */
+/* Sayaç Butonu */
+.count-buttons .form-control {
+  min-width: 40px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.count-buttons button {
+  width: 45px !important; /* Butonların genişliği sabit kalsın */
+  height: 100%;
+}
+
+/* Sipariş Ver Butonu */
+.order-button {
+  width: 100%;
+}
+
+/* MOBİL */
+@media (max-width: 1200px) {
+  /*  Wrapper'ı devreden çıkarıyoruz */
+  .order-wrapper {
+    display: contents !important;
+  }
+
+  .order-page-wrapper .container {
+    width: 70% !important;
+  }
+
+  .order-form-group {
+    width: 100% !important;
+  }
+
+  .order-info-card {
+    order: -1 !important;
+    width: 100% !important;
+    margin-bottom: 3rem;
+  }
+
+  .order-button {
+    width: 50%;
+  }
+  .count-buttons,
+  .order-button {
+    height: 45px !important;
+  }
+}

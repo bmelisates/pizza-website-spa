@@ -1,0 +1,34 @@
+.success-page {
+  background-color: #ce2829 !important;
+  /* height: 150vh !important; */
+  color: white;
+}
+
+.success-page .slogan {
+  color: #fdc913;
+  font-family: Satisfy;
+  font-size: 2rem;
+}
+
+.success-page h1 {
+  font-family: Roboto Condensed;
+  color: #faf7f2;
+  font-weight: 300;
+  font-size: 4.5rem;
+  padding: 1rem;
+}
+
+.success-divider {
+  width: 100%;
+  max-width: 500px;
+  border: 0;
+  border-top: 1.5px solid white;
+  margin: 40px auto;
+}
+
+.success-page h4 {
+  font-family: Barlow;
+  padding-bottom: 1rem;
+  font-weight: 600;
+  color: white;
+}
