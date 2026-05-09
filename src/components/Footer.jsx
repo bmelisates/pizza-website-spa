@@ -39,18 +39,18 @@ function Footer() {
         <div className="instagram f-card">
           <h3 className="f-title">Instagram</h3>
           <div className="images">
-            <img src="/assets/iteration-2/footer/insta/li-0.png" alt="" />
-            <img src="/assets/iteration-2/footer/insta/li-1.png" alt="" />
-            <img src="/assets/iteration-2/footer/insta/li-2.png" alt="" />
-            <img src="/assets/iteration-2/footer/insta/li-3.png" alt="" />
-            <img src="/assets/iteration-2/footer/insta/li-4.png" alt="" />
-            <img src="/assets/iteration-2/footer/insta/li-5.png" alt="" />
+            <img src="/assets/iteration-2/footer/insta/li-0.webp" alt="" />
+            <img src="/assets/iteration-2/footer/insta/li-1.webp" alt="" />
+            <img src="/assets/iteration-2/footer/insta/li-2.webp" alt="" />
+            <img src="/assets/iteration-2/footer/insta/li-3.webp" alt="" />
+            <img src="/assets/iteration-2/footer/insta/li-4.webp" alt="" />
+            <img src="/assets/iteration-2/footer/insta/li-5.webp" alt="" />
           </div>
         </div>
       </section>
       <div className="full-border"></div>
       <section className="container">
-        <p>© 2023 Teknolojik Yemekler.</p>
+        <p>© 2026 Teknolojik Yemekler.</p>
       </section>
     </footer>
   );

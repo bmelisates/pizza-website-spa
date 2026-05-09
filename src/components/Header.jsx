@@ -17,7 +17,7 @@ function Header({ handleClick }) {
           <br />
           PIZZA, DOYURUR
         </h1>
-        <button id="order-pizza" onClick={handleClick}>
+        <button id="hero-order-button" onClick={handleClick}>
           ACIKTIM
         </button>
       </div>

@@ -8,20 +8,26 @@ function Main({ handleClick }) {
             Özel <br /> Lezzetus
           </h2>
           <p>Position: Absolute Acı Pizza</p>
-          <button onClick={handleClick}>SİPARİŞ VER</button>
+          <button className="order-button" onClick={handleClick}>
+            SİPARİŞ VER
+          </button>
         </div>
         <div className="cards-right">
           <div className="card card-right1">
             <h3>
               Hackatlon <br /> Burger Menü
             </h3>
-            <button onClick={handleClick}>SİPARİŞ VER</button>
+            <button className="order-button" onClick={handleClick}>
+              SİPARİŞ VER
+            </button>
           </div>
           <div className="card card-right2">
             <h3>
               <span>Çoooook</span> hızlı <br /> npm gibi kurye
             </h3>
-            <button onClick={handleClick}>SİPARİŞ VER</button>
+            <button className="order-button" onClick={handleClick}>
+              SİPARİŞ VER
+            </button>
           </div>
         </div>
       </section>

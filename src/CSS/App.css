@@ -28,13 +28,6 @@ h1 {
   line-height: 1.1;
 }
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
 .logo {
   height: 6em;
   padding: 1em;
@@ -44,9 +37,6 @@ h1 {
 /* .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 } */
-.logo.vanilla:hover {
-  filter: drop-shadow(0 0 2em #f7df1eaa);
-}
 
 .card {
   padding: 2em;
@@ -90,7 +80,6 @@ button:focus-visible {
 }
 
 /* Benim Kodlarım */
-
 /* Genel Kodlar */
 * {
   box-sizing: border-box;
@@ -106,6 +95,23 @@ body {
   width: 70%;
   justify-content: space-between;
   padding: 1rem 0;
+}
+
+/* MOBİL */
+@media (max-width: 900px) {
+  .home {
+    height: 100vh;
+    width: 100%;
+  }
+
+  .home .logo {
+    width: 80%;
+  }
+  .container {
+    width: 80% !important;
+    flex-wrap: wrap;
+    margin: auto;
+  }
 }
 
 /* header */
@@ -343,20 +349,6 @@ li:first-child {
 
 /* MOBİL */
 @media (max-width: 900px) {
-  .home {
-    height: 100vh;
-    width: 100%;
-  }
-
-  .home .logo {
-    width: 80%;
-  }
-  .container {
-    width: 80% !important;
-    flex-wrap: wrap;
-    margin: auto;
-  }
-
   nav.container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);

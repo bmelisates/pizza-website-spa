@@ -63,8 +63,10 @@ function OrderForm({ orderData, setOrderData }) {
   const pizzaFiyati = 85.5 * count;
   const toplamFiyat = pizzaFiyati + malzemeFiyati;
 
-  // Sipariş Ver
+  // SİPARİŞ VER
   const [loading, setLoading] = useState(false);
+
+  // Form Geçerliliği Kontrolü (Sipariş ver Butonuna bağlandı)
   const isFormInvalid =
     formData.isim.length < 3 ||
     secilenMalzemeler.length < 4 ||
@@ -74,6 +76,7 @@ function OrderForm({ orderData, setOrderData }) {
     count <= 0;
   loading;
 
+  // Input takibi - State güncelleme
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -84,8 +87,9 @@ function OrderForm({ orderData, setOrderData }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
+    setLoading(true); //Kullanıcıya geri bildirim vermek ve double submiti önlemek için. (Butona bağlandı)
 
+    // Veri paketleme
     const siparisBilgisi = {
       ...formData,
       malzemeler: secilenMalzemeler,
@@ -162,7 +166,7 @@ function OrderForm({ orderData, setOrderData }) {
           </nav>
           {/* Başlık */}
           <h3 className="fw-semibold">Position Absolute Acı Pizza</h3>
-          {/* Info Group */}
+          {/* Info Satırı */}
           <div className="d-flex justify-content-between align-items-center mt-2 pb-4">
             <span className="h4 fw-bold mb-0">85.50₺</span>
             <div className="pizza-stats d-flex gap-5 text-secondary">
@@ -182,155 +186,161 @@ function OrderForm({ orderData, setOrderData }) {
           </p>
         </section>
 
-        {/* İlk 2 form elemanı */}
-        {/* Boyut ve Hamur Seçimi - Yan yana */}
-        <section className="container">
-          <div className="row">
-            {/* Boyut Seçimi */}
-            <div className="col-6">
-              <h5 className="dark-grey fw-bold">
-                Boyut Seç: <span className="required">*</span>
-              </h5>
-              <Form className="size-buttons light-grey">
-                <FormGroup check>
-                  <Input
-                    id="kucuk"
-                    name="boyut"
-                    type="radio"
-                    value="kucuk"
-                    onChange={handleChange}
-                  />
-                  <Label htmlFor="kucuk" check>
-                    S
-                  </Label>
-                </FormGroup>
-                <FormGroup check>
-                  <Input
-                    id="orta"
-                    name="boyut"
-                    type="radio"
-                    value="orta"
-                    onChange={handleChange}
-                  />
-                  <Label htmlFor="orta" check>
-                    M
-                  </Label>
-                </FormGroup>
-                <FormGroup check>
-                  <Input
-                    id="buyuk"
-                    name="boyut"
-                    type="radio"
-                    value="buyuk"
-                    onChange={handleChange}
-                  />
-                  <Label htmlFor="buyuk" check>
-                    L
-                  </Label>
-                </FormGroup>
-              </Form>
-            </div>
-            {/* Hamur Seçimi */}
-            <div className="col-6">
-              <h5 className="dark-grey fw-bold">
-                Hamur Seç: <span className="required">*</span>
-              </h5>
-              <FormGroup className="thickness-selects">
-                <Input
-                  id="hamur"
-                  className="mb-3 w-100"
-                  name="hamur"
-                  value={formData.hamur}
-                  type="select"
-                  onChange={handleChange}
-                >
-                  <option>-Hamur Kalınlığı Seç-</option>
-                  <option>İnce</option>
-                  <option>Orta</option>
-                  <option>Kalın</option>
-                </Input>
-              </FormGroup>
-            </div>
-          </div>
-        </section>
-
-        {/* Checkbox - Malzeme Seçimi */}
-        <section className="container">
-          <div className="light-grey">
-            <h5 className="dark-grey fw-bold">Ek Malzemeler:</h5>
-            <p>En fazla 10 malzeme seçebilirsiniz. 5₺</p>
-
-            <FormGroup className="fw-bold">
-              <div className="row ps-1">
-                {malzemeler.map((item) => (
-                  <FormGroup
-                    key={item.id}
-                    check
-                    /* col-6: En küçükte 2 sütun | col-md-4: Orta ekranda 3 sütun */
-                    className="ingredient-check col-6 col-md-4 d-flex align-items-center gap-2 mb-2"
-                  >
+        {/* FORM */}
+        <Form>
+          {/* İlk 2 form elemanı */}
+          {/* Boyut ve Hamur Seçimi - Yan yana */}
+          <section className="container">
+            <div className="row">
+              {/* Boyut Seçimi */}
+              <div className="col-6">
+                <h5 className="dark-grey fw-bold">
+                  Boyut Seç: <span className="required">*</span>
+                </h5>
+                <div className="size-buttons light-grey">
+                  <FormGroup check>
                     <Input
-                      type="checkbox"
-                      id={item.id}
-                      checked={secilenMalzemeler.includes(item.label)}
-                      onChange={() => handleIngredientChange(item.label)}
-                      disabled={
-                        secilenMalzemeler.length >= 10 &&
-                        !secilenMalzemeler.includes(item.label)
-                      }
+                      id="kucuk"
+                      name="boyut"
+                      type="radio"
+                      value="kucuk"
+                      onChange={handleChange}
                     />
-                    <Label htmlFor={item.id} check className="mb-0">
-                      {item.label}
+                    <Label htmlFor="kucuk" check>
+                      S
                     </Label>
                   </FormGroup>
-                ))}
+                  <FormGroup check>
+                    <Input
+                      id="orta"
+                      name="boyut"
+                      type="radio"
+                      value="orta"
+                      onChange={handleChange}
+                    />
+                    <Label htmlFor="orta" check data-cy="size-m-label">
+                      M
+                    </Label>
+                  </FormGroup>
+                  <FormGroup check>
+                    <Input
+                      id="buyuk"
+                      name="boyut"
+                      type="radio"
+                      value="buyuk"
+                      onChange={handleChange}
+                    />
+                    <Label htmlFor="buyuk" check>
+                      L
+                    </Label>
+                  </FormGroup>
+                </div>
               </div>
+              {/* Hamur Seçimi */}
+              <div className="col-6 ps-4">
+                <h5
+                  className="dark-grey fw-bold"
+                  style={{ paddingBottom: "10px" }}
+                >
+                  Hamur Seç: <span className="required">*</span>
+                </h5>
+                <FormGroup className="thickness-selects">
+                  <Input
+                    id="hamur"
+                    className="mb-3 w-100"
+                    name="hamur"
+                    value={formData.hamur}
+                    type="select"
+                    onChange={handleChange}
+                  >
+                    <option value="">--Hamur Kalınlığı Seç--</option>
+                    <option>İnce</option>
+                    <option>Orta</option>
+                    <option>Kalın</option>
+                  </Input>
+                </FormGroup>
+              </div>
+            </div>
+          </section>
+
+          {/* Checkbox - Malzeme Seçimi */}
+          <section className="container">
+            <div className="light-grey">
+              <h5 className="dark-grey fw-bold">Ek Malzemeler:</h5>
+              <p>En fazla 10 malzeme seçebilirsiniz. 5₺</p>
+
+              <FormGroup className="fw-bold">
+                <div className="row ps-3">
+                  {malzemeler.map((item) => (
+                    <FormGroup
+                      key={item.id}
+                      check
+                      /* col-6: En küçükte 2 sütun | col-md-4: Orta ekranda 3 sütun */
+                      className="ingredient-check col-6 col-md-4 d-flex align-items-center gap-2 mb-2"
+                    >
+                      <Input
+                        type="checkbox"
+                        id={item.id}
+                        checked={secilenMalzemeler.includes(item.label)}
+                        onChange={() => handleIngredientChange(item.label)}
+                        disabled={
+                          secilenMalzemeler.length >= 10 &&
+                          !secilenMalzemeler.includes(item.label)
+                        }
+                      />
+                      <Label htmlFor={item.id} check className="mb-0">
+                        {item.label}
+                      </Label>
+                    </FormGroup>
+                  ))}
+                </div>
+              </FormGroup>
+            </div>
+          </section>
+
+          {/* Ad - Soyad */}
+          <section className="name-area container">
+            <FormGroup style={{ width: "100%" }}>
+              <Label for="isim">
+                <h5 className="fw-bold">
+                  Adınız: <span className="required">*</span>
+                </h5>
+              </Label>
+              <Input
+                id="isim"
+                name="isim"
+                type="text"
+                rows="3"
+                placeholder="İsminizi giriniz"
+                minLength="3"
+                required
+                value={formData.isim}
+                onChange={handleChange}
+                invalid={formData.isim.length > 0 && formData.isim.length < 3}
+              />
+
+              <FormFeedback>Lütfen en az 3 karakter giriniz.</FormFeedback>
             </FormGroup>
-          </div>
-        </section>
+          </section>
 
-        {/* Ad - Soyad */}
-        <section className="name-area container">
-          <FormGroup style={{ width: "100%" }}>
-            <Label for="isim">
-              <h5 className="fw-bold">
-                Adınız: <span className="required">*</span>
-              </h5>
-            </Label>
-            <Input
-              id="isim"
-              name="isim"
-              type="text"
-              rows="3"
-              placeholder="İsminizi giriniz"
-              minLength="3"
-              required
-              value={formData.isim}
-              onChange={handleChange}
-              invalid={formData.isim.length > 0 && formData.isim.length < 3}
-            />
-
-            <FormFeedback>Lütfen en az 3 karakter giriniz.</FormFeedback>
-          </FormGroup>
-        </section>
-
-        {/* Sipariş Notu */}
-        <section className="order-note container">
-          <FormGroup style={{ width: "100%" }}>
-            <Label for="not">
-              <h5 className="fw-bold">Sipariş Notu:</h5>
-            </Label>
-            <Input
-              id="not"
-              name="not"
-              type="textarea"
-              rows="2"
-              placeholder="Siparişine eklemek istediğin bir not var mı?"
-              value={formData.not}
-              onChange={handleChange}
-            />
-          </FormGroup>
-        </section>
+          {/* Sipariş Notu */}
+          <section className="order-note container">
+            <FormGroup style={{ width: "100%" }}>
+              <Label for="not">
+                <h5 className="fw-bold">Sipariş Notu:</h5>
+              </Label>
+              <Input
+                id="not"
+                name="not"
+                type="textarea"
+                rows="2"
+                placeholder="Siparişine eklemek istediğin bir not var mı?"
+                value={formData.not}
+                onChange={handleChange}
+              />
+            </FormGroup>
+          </section>
+        </Form>
 
         {/* Border */}
         <hr className="container" />
@@ -340,15 +350,17 @@ function OrderForm({ orderData, setOrderData }) {
           {/* Counter Buton Bloğu */}
           <div
             className="input-group count-buttons"
-            style={{ width: "120px", flexShrink: 0 }}
+            style={{ height: "45px", flexShrink: 0 }}
           >
             <button
               className="btn btn-warning fw-bold"
               type="button"
               onClick={handleDecrease}
-              style={{ borderRadius: "5px 0 0 5px" }}
+              style={{
+                borderRadius: "5px 0 0 5px",
+              }}
             >
-              -
+              <span className="ps-2">-</span>
             </button>
             <div className="form-control text-center d-flex align-items-center justify-content-center fw-bold">
               {count}
@@ -359,7 +371,7 @@ function OrderForm({ orderData, setOrderData }) {
               onClick={handleIncrease}
               style={{ borderRadius: "0 5px 5px 0" }}
             >
-              +
+              <span className="ps-1">+</span>
             </button>
           </div>
 
@@ -373,16 +385,16 @@ function OrderForm({ orderData, setOrderData }) {
           >
             {/* Bilgi Kartı */}
             <div
-              className="card order-info-card shadow-sm border-bottom-0"
+              className="card order-info-card shadow-sm border-bottom-0 p-5"
               style={{ borderRadius: "8px 8px 0 0", background: "#FAF7F2" }}
             >
-              <div className="p-2">
+              <div>
                 <h5 className="mb-4 fw-bold">Sipariş Toplamı</h5>
-                <div className="d-flex justify-content-between mb-2 fw-bold">
+                <div className="d-flex justify-content-between mb-2 fw-bold pb-2">
                   <span className="light-grey">Pizza ({count})</span>
                   <span className="light-grey">{pizzaFiyati}₺</span>
                 </div>
-                <div className="d-flex justify-content-between mb-2 fw-bold">
+                <div className="d-flex justify-content-between mb-2 fw-bold pb-2">
                   <span className="light-grey">
                     Seçimler ({secilenMalzemeler.join(", ")})
                   </span>
@@ -403,10 +415,12 @@ function OrderForm({ orderData, setOrderData }) {
                 fontSize: "1.1rem",
               }}
               type="submit"
-              disabled={isFormInvalid}
+              disabled={isFormInvalid || loading} //Form geçersizse veya yükleniyorsa butonu kapat
               onClick={handleSubmit}
             >
-              <span className="fw-bold">SİPARİŞ VER</span>
+              <span className="fw-bold">
+                {loading ? "SİPARİŞİNİZ HAZIRLANIYOR..." : "SİPARİŞ VER"}
+              </span>
             </button>
           </div>
         </section>
