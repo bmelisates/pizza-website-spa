@@ -131,7 +131,7 @@ function OrderForm({ orderData, setOrderData }) {
         <div className="container flex-column">
           <img
             className="d-block mx-auto pb-0 pb-4"
-            src="../public/assets/iteration-1/logo.svg"
+            src="/assets/iteration-1/logo.svg"
             alt="logo"
           />
         </div>
