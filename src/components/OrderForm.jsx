@@ -59,7 +59,7 @@ function OrderForm({ orderData, setOrderData }) {
   };
 
   // Fiyat
-  const malzemeFiyati = secilenMalzemeler.length * 5;
+  const malzemeFiyati = secilenMalzemeler.length * 5 * count;
   const pizzaFiyati = 85.5 * count;
   const toplamFiyat = pizzaFiyati + malzemeFiyati;
 
